@@ -45,6 +45,7 @@ setup(
     python_requires=">=3.7, <4",
     keywords="solana blockchain web3",
     license="MIT",
+    license_files=("LICENSE",),
     package_data={"solana": ["py.typed"]},
     packages=find_namespace_packages(exclude=["tests", "tests.*"]),
     url="https://github.com/michaelhly/solanapy",
