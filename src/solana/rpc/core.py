@@ -6,7 +6,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 try:
     from typing import Literal  # type: ignore
 except ImportError:
-    from typing_extensions import Literal
+    from typing_extensions import Literal  # type: ignore
 
 from warnings import warn
 
@@ -49,7 +49,7 @@ class _ClientCore:  # pylint: disable=too-few-public-methods
     def __init__(self, commitment: Optional[Commitment] = None, blockhash_cache: Union[BlockhashCache, bool] = False):
         self._commitment = commitment or Finalized
         self.blockhash_cache: Union[BlockhashCache, Literal[False]] = (
-            BlockhashCache() if blockhash_cache is True else blockhash_cache
+            BlockhashCache() if blockhash_cache is True else False
         )
 
     def _get_balance_args(
