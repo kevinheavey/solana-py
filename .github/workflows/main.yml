@@ -21,10 +21,10 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      - name: Set up Python 3.7
+      - name: Set up Python 3.9
         uses: actions/setup-python@v1
         with:
-          python-version: 3.7
+          python-version: 3.9
 
       - name: Run image
         uses: abatilo/actions-poetry@v2.0.0
@@ -37,11 +37,11 @@ jobs:
 
       - name: Run linters
         run: |
-          poetry run black --check --diff --line-length=120 setup.py solana spl tests
-          poetry run pydocstyle setup.py solana spl/**/*.py tests
-          poetry run flake8 setup.py solana spl tests
-          poetry run mypy solana spl
-          poetry run pylint --rcfile=.pylintrc setup.py solana spl tests
+          poetry run black --check --diff --line-length=120 src tests
+          poetry run pydocstyle src tests
+          poetry run flake8 src tests
+          poetry run mypy src
+          poetry run pylint --rcfile=.pylintrc src tests
 
       - name: Run unit tests
         run: |
