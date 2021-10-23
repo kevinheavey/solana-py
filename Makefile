@@ -2,15 +2,14 @@ clean:
 	rm -rf dist build _build __pycache__ *.egg-info
 
 format:
-	poetry run isort setup.py solana spl tests
-	poetry run black --line-length=120 setup.py solana spl tests
+	poetry run isort src tests
+	poetry run black --line-length=120 src tests
 
 lint:
-	poetry run pydocstyle setup.py solana spl/**/*.py test
-	poetry run flake8 setup.py solana spl tests
-	poetry run mypy solana spl
-	poetry run pylint --rcfile=.pylintrc setup.py solana spl tests
-
+	poetry run pydocstyle src tests
+	poetry run flake8 src tests
+	poetry run mypy src
+	poetry run pylint --rcfile=.pylintrc src tests
 
 publish:
 	make clean
@@ -33,13 +32,13 @@ int-tests:
 	poetry run pytest -vv -m integration
 
 update-localnet:
-    sh bin/localnet.sh update
+	sh bin/localnet.sh update
 
 start-localnet:
-    sh bin/localnet.sh up
+	sh bin/localnet.sh up
 
 stop-localnet:
-    sh bin/localnet.sh down
+	sh bin/localnet.sh down
 
 # Minimal makefile for Sphinx documentation
 #
